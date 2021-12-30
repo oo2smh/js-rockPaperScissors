@@ -8,13 +8,38 @@
   <script>
     // prompt the user for their selection & save their answer in a variable 
     let playerSelection = prompt('Do you want to play rock, paper or scissors? Type either rock, paper or scissors');
-      // if the user types anything else, prompt them to try again!
-    if (playerSelection.toLowerCase() !== 'rock' || 'paper' || 'scissors') {
-      playerSelection = prompt('Your response is not valid. Please try again. Type either rock, paper or scissors');
-    }
+    playerSelection = playerSelection.toLowerCase();
+      // 🛑 if the user types anything else, prompt them to try again! 
+    playerSelection !== 'rock' || 'paper' || 'scissors' ? 
+      playerSelection = prompt('Your response is not valid. Please try again. Type either rock, paper or scissors') : 
+      playerSelection
+
+      // convert user's response to a number
+
+      switch(playerSelection) {
+        case 'rock': 
+          playerSelection = 1;
+          break;
+        case 'paper': 
+          playerSelection = 2;
+        case 'scissors':
+          playerSelection = 3;
+      }
+
+
+      
+  
 
     // function computerPlay
       // computerSelection starts at 0, have the computer randomly select 1-3 (1 = rock, 2 = paper, 3 = scissors)
+      let computerSelection = Math.ceil(Math.floor() * 3);
+
+      // compare playerSelection to computerSelection and determine winner 
+        // 1-1, 2-2, 3-3 tie | 1 - 2 --> 2 wins | 1 - 3 --> 1 wins | 2 - 3 --> 3 wins (6 total combinations)
+
+        // TIE ,1-2, 2-1, 1-3, 3-1, 2-3, 3-2 (7 total combinations), switch statement because there's a lot of choices 
+
+
     // function playRound(playerSelection, computerSelection)
     // function game() .. plays each round 5x 
  
