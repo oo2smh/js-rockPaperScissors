@@ -20,19 +20,21 @@
       playerSelection = prompt('Try Again!');
     }
 
-
     // convert user's response to a number
-    function convertStringToNumber() {
-      switch(playerSelection) {
-        case 'rock': 
-          playerSelection = 1;
-          break;
-        case 'paper': 
-          playerSelection = 2;
-        case 'scissors':
-          playerSelection = 3;
-      }
-    }  
+    switch(playerSelection) {
+      case 'rock': 
+        playerSelection = 1;
+        break;
+      case 'paper': 
+        playerSelection = 2;
+        break;
+      case 'scissors':
+        playerSelection = 3;
+        break;
+    }
+    
+
+    convertStringtoNumber(playerSelection);
     
     // function computerPlay
       // computerSelection starts at 0, have the computer randomly select 1-3 (1 = rock, 2 = paper, 3 = scissors)
