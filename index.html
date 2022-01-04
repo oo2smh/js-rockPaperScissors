@@ -12,33 +12,36 @@
     playerScore = 0;
     computerScore = 0; 
     
-    // prompt the user for their selection & save their answer in a variable  ✅
-    // if the user types anything else, prompt them to try again! ✅
-    playerSelection = prompt('Do you want to play rock, paper or scissors? Type either rock, paper or scissors');
+    function userInput() {
+      // prompt the user for their selection & save their answer in a variable  ✅
+      // if the user types anything else, prompt them to try again! ✅
+      playerSelection = prompt('Do you want to play rock, paper or scissors? Type either rock, paper or scissors');
 
-    while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
-      playerSelection = prompt('Try Again!');
+      while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+        playerSelection = prompt('Try Again!');
+      }
+
+      // lowercases playerSelection
+      playerSelection = playerSelection.toLowerCase();
+
+      // convert user's response to a number
+      switch(playerSelection) {
+        case 'rock': 
+          playerSelection = 1;
+          break;
+        case 'paper': 
+          playerSelection = 2;
+          break;
+        case 'scissors':
+          playerSelection = 3;
+          break;
+      }
     }
 
-    // lowercases playerSelection
-    playerSelection = playerSelection.toLowerCase();
-
-    // convert user's response to a number
-    switch(playerSelection) {
-      case 'rock': 
-        playerSelection = 1;
-        break;
-      case 'paper': 
-        playerSelection = 2;
-        break;
-      case 'scissors':
-        playerSelection = 3;
-        break;
-    }
-    
     // function computerPlay
       // computerSelection starts at 0, have the computer randomly select 1-3 (1 = rock, 2 = paper, 3 = scissors)
     function oneRound() {
+      userInput();
       computerSelection = Math.ceil(Math.random() * 3);
       if (computerSelection === playerSelection) {
         return `It's a tie!`
@@ -62,23 +65,13 @@
         return 'You win';
       }
     }
-    
-    oneRound();
 
-    function game () {
-      // checks playerScore && computerScore to see if there's a 5. If there's a 5, declares the winner
-      playerScore === 5 ? `Congrats. You win the game!` : 'Continue playing'; 
-      computerScore === 5 ? `Sorry. You lose the game!` : 'Continue playing'; 
-   // compare playerSelection to computerSelection and determine winner 
-        // 1-1, 2-2, 3-3 tie | 1 - 2 --> 2 wins | 1 - 3 --> 1 wins | 2 - 3 --> 3 wins (6 total combinations)
+    function game() {
 
-        // TIE ,1-2, 2-1, 1-3, 3-1, 2-3, 3-2 (7 total combinations), switch statement because there's a lot of choices
+      // checks playerScore && computerScore to see if there's a 5. If it's less than 5 continue playing the game. If one of the scores is 5,
+
     }
      
-
-    // function playRound(playerSelection, computerSelection)
-    // function game() .. plays each round 5x 
-
   </script>
 </head>
 <body>
