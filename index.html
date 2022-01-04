@@ -6,16 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
   <script>
-    // prompt the user for their selection & save their answer in a variable 
-    let playerSelection = prompt('Do you want to play rock, paper or scissors? Type either rock, paper or scissors');
-    playerSelection = playerSelection.toLowerCase();
-      // 🛑 if the user types anything else, prompt them to try again! 
-    playerSelection !== 'rock' || 'paper' || 'scissors' ? 
-      playerSelection = prompt('Your response is not valid. Please try again. Type either rock, paper or scissors') : 
-      playerSelection
+    
+    // var declaration ✅
+    let playerSelection, computerSelection, playerScore, computerScore;
+    playerScore = 0;
+    computerScore = 0; 
+    
+    // prompt the user for their selection & save their answer in a variable  ✅
+    // if the user types anything else, prompt them to try again! ✅
+    playerSelection = prompt('Do you want to play rock, paper or scissors? Type either rock, paper or scissors');
 
-      // convert user's response to a number
+    while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+      playerSelection = prompt('Try Again!');
+    }
 
+
+    // convert user's response to a number
+    function convertStringToNumber() {
       switch(playerSelection) {
         case 'rock': 
           playerSelection = 1;
@@ -25,24 +32,50 @@
         case 'scissors':
           playerSelection = 3;
       }
-
-
-      
-  
-
+    }  
+    
     // function computerPlay
       // computerSelection starts at 0, have the computer randomly select 1-3 (1 = rock, 2 = paper, 3 = scissors)
-      let computerSelection = Math.ceil(Math.floor() * 3);
+    function computerPlay(playerSelection, computerSelection) {
+      playerSelection.toLowerCase();
+      convertStringToNumber();
+      return computerSelection = Math.ceil(Math.floor() * 3);
+      if (computerSelection === playerSelection) {
+        return `It's a tie!`
+      } else if (computerSelection === 1 && playerSelection === 2) {
+        return `You win!`;
+        playerScore++;
+      } else if (computerSelection === 2 && playerSelection === 1) {
+        return 'You lose!';
+        computerScore++;
+      } else if (computerSelection === 1 && playerSelection === 3) {
+        return 'You lose!';
+        computerScore++;
+      } else if (computerSelection === 3 && playerSelection === 3) {
+        return 'You win!';
+        playerScore++;
+      } else if (computerSelection === 2 && playerSelection === 3) {
+        return 'You win'
+        playerScore++;
+      } else if (computerSelection === 3 && playerSelection === 2) {
+        return 'You win';
+        playerScore++;
+      }
+    }
 
-      // compare playerSelection to computerSelection and determine winner 
+    function game () {
+      // checks playerScore && computerScore to see if there's a 5. If there's a 5, declares the winner
+      playerScore === 5 ? `Congrats. You win the game!` : 'Continue playing'; 
+      computerScore === 5 ? `Sorry. You lose the game!` : 'Continue playing'; 
+   // compare playerSelection to computerSelection and determine winner 
         // 1-1, 2-2, 3-3 tie | 1 - 2 --> 2 wins | 1 - 3 --> 1 wins | 2 - 3 --> 3 wins (6 total combinations)
 
-        // TIE ,1-2, 2-1, 1-3, 3-1, 2-3, 3-2 (7 total combinations), switch statement because there's a lot of choices 
-
+        // TIE ,1-2, 2-1, 1-3, 3-1, 2-3, 3-2 (7 total combinations), switch statement because there's a lot of choices
+    }
+     
 
     // function playRound(playerSelection, computerSelection)
     // function game() .. plays each round 5x 
- 
 
   </script>
 </head>
