@@ -54,24 +54,32 @@
       } else if (computerSelection === 1 && playerSelection === 3) {
         ++computerScore;
         return 'You lose!';
-      } else if (computerSelection === 3 && playerSelection === 3) {
+      } else if (computerSelection === 3 && playerSelection === 1) {
         ++playerScore;
         return 'You win!';
       } else if (computerSelection === 2 && playerSelection === 3) {
         ++playerScore;
         return 'You win'
       } else if (computerSelection === 3 && playerSelection === 2) {
-        ++playerScore;
-        return 'You win';
+        ++computerScore;
+        return 'You lose';
       }
     }
 
     function game() {
 
-      // checks playerScore && computerScore to see if there's a 5. If it's less than 5 continue playing the game. If one of the scores is 5,
-
+      // checks playerScore && computerScore to see if there's a 2. If it's less than 2 continue playing the game. 
+      while (playerScore < 2 && computerScore < 2) {
+        oneRound();
+      } 
+      if (playerScore === 2) {
+        alert('Congrats! You win!');
+      } else if (computerScore === 2) {
+        alert('You lose loser');
+      }
     }
      
+    game();
   </script>
 </head>
 <body>
