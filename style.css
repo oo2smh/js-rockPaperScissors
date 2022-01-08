@@ -1,0 +1,23 @@
+/* FLEXBOX SETUP */
+body {
+  display: flex;
+  justify-content: column;
+}
+
+header {
+  display: flex;
+  height: 300px;
+  border: 1px solid blue;
+}
+
+.cardsWrapper {
+  display: flex;
+}
+
+
+
+/* DIMENSIONS SETUP  */
+.img-card {
+  max-height: 200px;
+  max-width: 200px;
+}
