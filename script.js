@@ -1,74 +1,134 @@
-    
-    // // var declaration ✅
-    // let playerSelection, computerSelection, playerScore, computerScore;
-    // playerScore = 0;
-    // computerScore = 0; 
-    
-    // function userInput() {
-    //   // prompt the user for their selection & save their answer in a variable  ✅
-    //   // if the user types anything else, prompt them to try again! ✅
-    //   playerSelection = prompt('Do you want to play rock, paper or scissors? Type either rock, paper or scissors');
+// functionality var declarations 
 
-    //   while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
-    //     playerSelection = prompt('Try Again!');
-    //   }
+let playerChoice, compChoice, playerScore, compScore, winnerText;
 
-    //   // lowercases playerSelection
-    //   playerSelection = playerSelection.toLowerCase();
+playerScore = 0;
+compScore = 0;
 
-    //   // convert user's response to a number
-    //   switch(playerSelection) {
-    //     case 'rock': 
-    //       playerSelection = 1;
-    //       break;
-    //     case 'paper': 
-    //       playerSelection = 2;
-    //       break;
-    //     case 'scissors':
-    //       playerSelection = 3;
-    //       break;
-    //   }
-    // }
+// dom variable declarations
+let playerChoiceIcon, compChoiceIcon, cardsContent, rock, paper, scissors, userSelected, compSelected, promptWinner, btnReset, userScoreDisplay, compScoreDisplay;
 
-    // // function computerPlay
-    //   // computerSelection starts at 0, have the computer randomly select 1-3 (1 = rock, 2 = paper, 3 = scissors)
-    // function oneRound() {
-    //   userInput();
-    //   computerSelection = Math.ceil(Math.random() * 3);
-    //   if (computerSelection === playerSelection) {
-    //     return `It's a tie!`
-    //   } else if (computerSelection === 1 && playerSelection === 2) {
-    //     ++playerScore;
-    //     return `You win!`;
-    //   } else if (computerSelection === 2 && playerSelection === 1) {
-    //     ++computerScore;
-    //     return 'You lose!';
-    //   } else if (computerSelection === 1 && playerSelection === 3) {
-    //     ++computerScore;
-    //     return 'You lose!';
-    //   } else if (computerSelection === 3 && playerSelection === 1) {
-    //     ++playerScore;
-    //     return 'You win!';
-    //   } else if (computerSelection === 2 && playerSelection === 3) {
-    //     ++playerScore;
-    //     return 'You win'
-    //   } else if (computerSelection === 3 && playerSelection === 2) {
-    //     ++computerScore;
-    //     return 'You lose';
-    //   }
-    // }
+cardsAll = document.querySelectorAll('.card')
+rock = document.querySelector('.card-rock');
+paper = document.querySelector('.card-paper');
+scissors = document.querySelector('.card-scissors');
+userSelected = document.querySelector('.user-selected');
+compSelected = document.querySelector('.comp-selected');
+promptWinner = document.querySelector('.prompt-winner')
+btnReset = document.querySelector('.btn-newGame');
+userScoreDisplay = document.querySelector('.user-score');
+compScoreDisplay = document.querySelector('.comp-score');
 
-    // function game() {
+rock.addEventListener('click', () => {
+  playerChoice = 1;
+  userSelected.classList.remove('show-paper', 'show-scissors');
+  userSelected.classList.add('show-rock');
+  playGame();
+  console.log('clicked');
+});
+paper.addEventListener('click', () => {
+  playerChoice = 2;
+  userSelected.classList.remove('show-rock', 'show-scissors');
+  userSelected.classList.add('show-paper')
+  playGame();
+});
+scissors.addEventListener('click', () => {
+  playerChoice = 3;
+  userSelected.classList.remove('show-rock', 'show-paper');
+  userSelected.classList.add('show-scissors')
+  playGame();
+}); 
 
-    //   // checks playerScore && computerScore to see if there's a 2. If it's less than 2 continue playing the game. 
-    //   while (playerScore < 2 && computerScore < 2) {
-    //     oneRound();
-    //   } 
-    //   if (playerScore === 2) {
-    //     alert('Congrats! You win!');
-    //   } else if (computerScore === 2) {
-    //     alert('You lose loser');
-    //   }
-    // }
-     
-    // game();
+
+function playRound() { 
+  compChoice = Math.ceil(Math.random() * 3);
+  
+  // comp selection icon;
+
+  if(compChoice === 1) {
+    compSelected.classList.remove('show-paper', 'show-scissors');
+    compSelected.classList.add('show-rock');
+  } else if (compChoice === 2) {
+    compSelected.classList.remove('show-rock', 'show-scissors');
+    compSelected.classList.add('show-paper')
+  } else {
+    compSelected.classList.remove('show-rock', 'show-paper');
+    compSelected.classList.add('show-scissors')
+  }
+
+  if (playerChoice === compChoice) {
+    promptWinner.textContent = 'It\'s a tie!!'
+  } else if ( 
+    (playerChoice === 1 && compChoice === 2) ||
+    (playerChoice === 2 && compChoice === 3) ||
+    (playerChoice === 3 && compChoice === 1) 
+  ) {
+    promptWinner.textContent = 'The Computer Wins!';
+    compScore++;
+  } else if (
+    (playerChoice === 2 && compChoice === 1) ||
+    (playerChoice === 1 && compChoice === 3) ||
+    (playerChoice === 3 && compChoice === 2)
+  ) {
+    playerScore++;
+    promptWinner.textContent = 'Congrats You Win!'; 
+  }
+  updateScore();  
+}
+
+function playGame() {
+  if (playerScore === 3) {
+   alert('Congrats! You beat the computer!');
+   resetScore();
+}
+
+  if (compScore === 3) {
+    alert('Sorry! The computer beat you!');
+    resetScore();
+}
+  playRound();
+}
+
+function updateScore() {
+  switch(playerScore) {
+    case 1: 
+      userScoreDisplay.textContent = '1';
+      break;
+    case 2:
+      userScoreDisplay.textContent = '2';
+      break;
+    case 3:
+      userScoreDisplay.textContent = '3';
+      break;  
+  }
+
+  switch(compScore) {
+    case 1: 
+      compScoreDisplay.textContent = '1';
+      break;
+    case 2:
+      compScoreDisplay.textContent = '2';
+      break;
+    case 3:
+      compScoreDisplay.textContent = '3';
+      break;  
+  }
+
+}
+
+// function to reset the score to 0
+function resetScore() {
+  compSelected.classList.remove('show-rock','show-paper', 'show-scissors');
+  playerScore = 0;
+  compScore = 0;
+  userScoreDisplay.textContent = '0';
+  compScoreDisplay.textContent = '0';
+} 
+
+btnReset.addEventListener('click', () => {
+  resetScore();
+});
+
+
+
+

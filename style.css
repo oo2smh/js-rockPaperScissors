@@ -1,23 +1,184 @@
-/* FLEXBOX SETUP */
+/*  RESET DEFAULT VALUES */
 body {
+  margin: 0;
   display: flex;
-  justify-content: column;
+  flex-direction: column;
+  background-color: rgb(19, 21, 20);
+
+  /* text styling */
+  color: white;
+  text-align: center;
+  letter-spacing: 0.3vh;
+  line-height: 1.2;
 }
 
+h1,
+p,
+btn {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* LV1 FLEXBOX, ALIGNMENT & SIZING*/
 header {
   display: flex;
-  height: 300px;
-  border: 1px solid blue;
+  justify-content: center;
+  align-items: flex-end;
+  max-height: 100vh;
+  margin: 28px;
+  font-size: 100%;
 }
 
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgb(35,36,37);
+  margin-top: 36px;
+}
+
+.mainGame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-evenly;  
+  margin: 24px 24px 36px 24px;
+}
+
+/* HEADER */
+.header_title {
+  margin-bottom: 12px;
+}
+
+/* MAIN GAME */
 .cardsWrapper {
   display: flex;
+  justify-content: center;
+  width: 90%;
 }
 
+.l-side,
+.r-side,
+.c-side {
+  display: flex;
+  flex-direction: column;
+}
 
+.cardsContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-/* DIMENSIONS SETUP  */
+.card {
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  background-color: rgb(29, 36, 34);
+  margin: 3vw;
+  padding: 2vw;
+  border-radius: 24px;
+  min-height: 48px;
+  min-width: 48px;
+}
+
+.card:hover {
+  background-color: rgb(54, 50, 50);
+  transform: scale(1.2);
+}
+
 .img-card {
-  max-height: 200px;
-  max-width: 200px;
+  max-height: 100px;
+  max-width: 100px;
+  min-height: 3vh;
+  min-width: 3vw;
+  margin-bottom: 8px;
+}
+
+/* SCOREBOARD */
+.c-side {
+  display: flex;
+  align-items: center;
+}
+
+.prompt-winner {
+  margin-top: 16px;
+}
+
+.btn-newGame {
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 16px;
+  color: white;
+  background-color: rgb(46, 46, 49);
+  border: none;
+}
+
+.btn-newGame:hover {
+  transform: scale(1.1);
+  background-color: rgb(58, 62, 80);
+}
+
+.chosen-option {
+  align-self: center;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 2px solid rgb(46, 47, 49);
+  height: 48px;
+  width: 48px;
+}
+
+.user-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-icon {
+  height: 48px;
+  width: 48px;
+}
+
+/* FOOTER */
+.img-gh {
+  height: 20px;
+  width: 20px;
+  padding: 20px;
+}
+
+.img-gh:hover {
+  background-color: rgb(88, 88, 94);
+}
+
+/* DYNAMIC VISIBILITY */
+.display {
+  display: block;
+}
+
+.invisible {
+  display: none;
+}
+
+.show-rock {
+  background-image: url('./img/rock-black.png');
+  background-size: contain;
+}
+
+.show-paper {
+  background-image: url('./img/paper-white.png');
+  background-size: contain;
+}
+
+.show-scissors {
+  background-image: url('./img/scissors.png');
+  background-size: contain;
 }

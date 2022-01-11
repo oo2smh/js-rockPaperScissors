@@ -5,51 +5,84 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="style.css">
   <script src='script.js' defer></script>
 </head>
 <body>
+
+<!-- HEADER -->
 <header>
-    <div class='l-side'>
-      <img src="./img/user.png" alt="User">
-      <h2>User</h2>
-    </div>
     <div class='l-center'>
-      <h1>Rock Paper Scissors</h1>
+      <h1 class='header_title'>Rock Paper Scissors</h1>
+      <p><em>First to 3 wins!</em></p>
     </div>
-    <div class='r-side'>
-      <img src="./img/computer.png" height="225px" alt="Computer">
-      <h2>Computer</h2>
-    </div>
+
 </header>
 
+<!-- MAIN GAME -->
 <section class='mainGame'>
   <div class='cardsWrapper'>
     <div class='cardsContent'>
-      <div class='card-rock'>
-        <img src="./img/rock.png" class="img-card" alt="Rock">
+      <div class='card-rock card'>
+        <img src="./img/rock-black.png" class="img-card" alt="Rock">
+        <p>Rock</p>
       </div>
-      <div class='card-paper'>
-        <img src="./img/paper.png" class="img-card" alt="Paper">
+      <div class='card-paper card'>
+        <img src="./img/paper-white.png" class="img-card" alt="Paper">
+        <p>Paper</p>
       </div>
-      <div class='card-scissors'>
+      <div class='card-scissors card'>
         <img src="./img/scissors.png" class="img-card" alt="Scissors">
+        <p>Scissors</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class='playAgain'>
-  <button>Play Again</button>
+<!-- SCOREBOARD -->
+<section class='scoreboard'>
+  <div class='l-side'>
+    <div class='chosen-option user-selected'></div>
+    <div class='user-icon'>
+      <img src="./img/user.png" class="player-icon" alt="User">
+      <p>User</p>
+      <p class='user-score'>0</p>
+    </div>
+  </div>
+  <div class="c-side">
+    <button class="btn-newGame">Reset Score</button>
+    <div class="prompt-winner" width=100px></div>
+  </div>
+  <div class='r-side'>
+    <div class="chosen-option comp-selected"></div>
+    <div class="user-icon">
+      <img src="./img/computer-white.png" class="player-icon img-computer"  alt="Computer">
+      <p>Comp</p>
+      <p class='comp-score'>0</p>
+    </div>
+  </div>
 </section>
 
+
+<!-- FOOTER -->
 <footer>
-  <p>Created by oo2smh</p>
-  <img src="./img/github-logo.png" alt="">
+  <div class="c-footer"><p>Created by oo2smh</p></div>
+  <div class='icons-wrapper'>
+    <a href="https://github.com/oo2smh"><img src="./img/gh-white.png" class="img-gh" height='24px' alt=""></a>
+    <img src="" alt="">
+  </div>
 </footer>
 
-<div>
-
-</div>
+<!-- AUDIO -->
+<audio src="./sounds/background.mp3" class='audio-background'></audio>
+<audio src="./sounds/rock.mp3" class="audio-rock"></audio>
+<audio src="./sounds/paper.mp3" class="audio-paper"></audio>
+<audio src="./sounds/paper.mp3" class='audio-paper'></audio>
   
 </body>
 </html>
+
+
+<!-- Extra Features -->
+<!-- Dark Mode -->
+<!-- Music On & Off Mode -->
